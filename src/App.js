@@ -28,7 +28,7 @@ const Ball = ({ball}) => {
             position={[ball.pos.x, ball.pos.y, 0]}
             ref={ref}
         >
-            <sphereGeometry args={[0.25, 16, 16]} />
+            <sphereGeometry attach={"geometry"} args={[0.25, 16, 16]} />
             <meshLambertMaterial attach={"material"} color={'pink'} />
         </mesh>
     )
@@ -107,7 +107,7 @@ export const App = () => {
           <Canvas id={"game-canvas"}>
             <ambientLight intensity={0.5} />
             <spotLight position={[10, 15, 10]} angle={0.3} />
-            <Player setPlayer={setPlayer} setMounted={setMounted}/>
+            <Player setPlayer={setPlayer}/>
             {balls.current.map((ball, i) => {
                 return <Ball ball={ball} key={`${ball.pos.x}-${ball.pos.y}-${ball.nonce}`}/>
             })}
